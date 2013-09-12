@@ -60,7 +60,7 @@ class DumbFixturePluginWithUrls(DumbFixturePlugin):
         return http.HttpResponse("It works")
 
     def get_plugin_urls(self):
-        from django.conf.urls.defaults import patterns, url
+        from django.conf.urls import patterns, url
         return patterns('',
             url(r'^testview/$', admin.site.admin_view(self.test_view), name='dumbfixtureplugin'),
         )
