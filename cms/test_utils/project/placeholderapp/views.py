@@ -32,10 +32,10 @@ def list_view_multi(request):
     return render_to_response('list.html', context)
 
 
-def detail_view_multi(request, id, template_name='detail_multi.html', item_name="char_1",
+def detail_view_multi(request, pk, template_name='detail_multi.html', item_name="char_1",
                 template_string='',):
     instance = MultilingualExample1.objects.language(
-        get_language_from_request(request)).get(pk=id)
+        get_language_from_request(request)).get(pk=pk)
     return _base_detail(request, instance, template_name, item_name,
                         template_string)
 
@@ -46,8 +46,8 @@ def list_view(request):
     return render_to_response('list.html', context)
 
 
-def detail_view(request, id, template_name='detail.html', item_name="char_1",
+def detail_view(request, pk, template_name='detail.html', item_name="char_1",
                 template_string='',):
-    instance = Example1.objects.get(pk=id)
+    instance = Example1.objects.get(pk=pk)
     return _base_detail(request, instance, template_name, item_name,
                         template_string)
