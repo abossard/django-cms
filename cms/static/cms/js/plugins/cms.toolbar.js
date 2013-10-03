@@ -488,10 +488,11 @@ $(document).ready(function () {
 			this.lockToolbar = false;
 		},
 
-		openModal: function (url, name, breadcrumb) {
+		openModal: function (url, name, breadcrumb, type) {
 			// reset breadcrumb
 			this.modal.find('.cms_modal-breadcrumb').hide();
 			this.modal.find('.cms_modal-breadcrumb-items').html('');
+			this.options.type = type;
 
 			// empty buttons
 			this.modal.find('.cms_modal-buttons').html('');
@@ -1060,7 +1061,11 @@ $(document).ready(function () {
 		_setModalButtons: function (iframe) {
 			var that = this;
 			var row = iframe.contents().find('.submit-row:eq(0)');
-			var buttons = row.find('input, a');
+			if(this.options.type == 'model'){
+				var buttons = row.find('input, a').not('.deletelink').not('[name="_addanother"]');
+			} else {
+				var buttons = row.find('input, a');
+			}
 			var render = $('<span />'); // seriously jquery...
 
 			// if there are no buttons, try again

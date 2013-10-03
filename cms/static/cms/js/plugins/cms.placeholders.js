@@ -449,6 +449,9 @@ $(document).ready(function () {
 
 			// handler for specific static items
 			if(this.options.type === 'generic') this._setGeneric();
+
+			// handler for specific static items
+			if(this.options.type === 'model') this._setGeneric();
 		},
 
 		// initial methods
@@ -818,7 +821,7 @@ $(document).ready(function () {
 		},
 
 		_openModal: function (url, name, breadcrumb) {
-			return CMS.API.Toolbar.openModal(url, name, breadcrumb);
+			return CMS.API.Toolbar.openModal(url, name, breadcrumb, this.options.type);
 		},
 
 		_showError: function (msg) {
