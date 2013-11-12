@@ -288,7 +288,7 @@ $(document).ready(function () {
 				e.preventDefault();
 				that._maximizeModal();
 			});
-			this.modal.find('.cms_modal-breadcrumb-items a').live('click', function (e) {
+			this.modal.on('click','.cms_modal-breadcrumb-items a', function (e) {
 				e.preventDefault();
 				that._changeModalContent($(this));
 			});
@@ -730,6 +730,7 @@ $(document).ready(function () {
 			if(this.settings.sideframe.maximized) this._maximizeSideframe();
 			// otherwise do normal behaviour
 			if(!this.settings.sideframe.hidden && !this.settings.sideframe.maximized) {
+                this.sideframe.show();
 				if(animate) {
 					this.sideframe.animate({ 'width': width }, this.options.sideframeDuration);
 					this.body.animate({ 'margin-left': width }, this.options.sideframeDuration);
